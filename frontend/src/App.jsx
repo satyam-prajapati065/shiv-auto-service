@@ -41,7 +41,7 @@ export default function App() {
   const [reviews, setReviews] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   // Fetch Live Data from MongoDB API on initial load
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,19 +50,19 @@ export default function App() {
       try {
         const [servicesRes, partsRes, offersRes, reviewsRes, blogsRes] =
           await Promise.all([
-            fetch("/api/services")
+            fetch(`${API_BASE_URL}/api/services`)
               .then((res) => res.json())
               .catch(() => ({ success: false })),
-            fetch("/api/parts")
+            fetch(`${API_BASE_URL}/api/parts`)
               .then((res) => res.json())
               .catch(() => ({ success: false })),
-            fetch("/api/offers")
+            fetch(`${API_BASE_URL}/api/offers`)
               .then((res) => res.json())
               .catch(() => ({ success: false })),
-            fetch("/api/reviews")
+            fetch(`${API_BASE_URL}/api/reviews`)
               .then((res) => res.json())
               .catch(() => ({ success: false })),
-            fetch("/api/blogs")
+            fetch(`${API_BASE_URL}/api/blogs`)
               .then((res) => res.json())
               .catch(() => ({ success: false })),
           ]);
