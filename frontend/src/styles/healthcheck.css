@@ -1,0 +1,452 @@
+/* ==========================================================================
+   HEALTHCHECK PAGE STYLES (SCREEN & STRICT PRINT OVERRIDES)
+   ========================================================================== */
+
+.healthcheck-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-badge.green {
+    background-color: #d1fae5;
+    border-color: #a7f3d0;
+    color: #047857;
+}
+
+/* Audit Header Card */
+.audit-header-card {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 24px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.audit-inputs {
+    display: flex;
+    gap: 16px;
+    flex-grow: 1;
+}
+
+.audit-inputs .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 160px;
+}
+
+.score-summary-side {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.score-box {
+    text-align: right;
+}
+
+.score-lbl {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted, #64748b);
+    text-transform: uppercase;
+    display: block;
+}
+
+.score-num {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.score-num.green {
+    color: var(--success-green, #10b981);
+}
+
+.score-num.amber {
+    color: var(--warning-amber, #f59e0b);
+}
+
+/* Checklist Grid */
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .checklist-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.check-item-card {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.check-item-card.ok:hover {
+    border-color: var(--primary-blue, #003876);
+}
+
+.check-item-card.attention {
+    background-color: #fffbeb;
+    border-color: #fde68a;
+}
+
+.check-icon {
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.check-details {
+    flex-grow: 1;
+}
+
+.check-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.check-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-dark, #0f172a);
+}
+
+.status-pill {
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.status-pill.green {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-pill.amber {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.check-desc {
+    font-size: 11px;
+    color: var(--text-muted, #64748b);
+    margin-top: 4px;
+}
+
+/* Generated Report */
+.generated-report-card {
+    margin-top: 36px;
+    background: var(--white, #ffffff);
+    border: 1px solid #bfdbfe;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.report-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 16px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.report-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wrench-badge {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-red, #e31b23);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-brand h3 {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--primary-blue, #003876);
+    margin: 0;
+}
+
+.report-brand p {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted, #64748b);
+    margin: 2px 0 0 0;
+}
+
+.report-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.report-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+}
+
+.stat-card {
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.stat-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted, #64748b);
+    text-transform: uppercase;
+    display: block;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.stat-value.green {
+    color: var(--success-green, #10b981);
+}
+
+.stat-value.blue {
+    color: var(--primary-blue, #003876);
+}
+
+.stat-value.amber {
+    color: var(--warning-amber, #f59e0b);
+}
+
+.recommendations-box {
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.recommendations-box h4 {
+    font-size: 12px;
+    font-weight: 800;
+    color: #92400e;
+    margin: 0;
+}
+
+.recommendations-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.recommendations-box li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ABSOLUTE HIDE ON NORMAL SCREEN */
+.print-only-table-section,
+.print-only-stamp-footer {
+    display: none !important;
+}
+
+/* ==========================================================================
+   STRICT PRINT ENGINE OVERRIDES (FIXES TOP GAP & SHOWS 20 POINTS)
+   ========================================================================== */
+
+@media print {
+
+    /* 1. Reset Page Boundaries to Eliminate Top Whitespace */
+    @page {
+        size: A4 portrait;
+        margin: 0mm !important;
+        /* Zeroes out browser default top gap */
+    }
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* 2. Hide Non-Print Interface */
+    .navbar-wrapper,
+    .footer-wrapper,
+    .floating-controls,
+    .print-hide,
+    .page-header-center,
+    .audit-header-card,
+    .checklist-grid {
+        display: none !important;
+    }
+
+    .healthcheck-wrapper {
+        max-width: 100% !important;
+        padding: 10mm 12mm !important;
+        /* Tight margin inside page */
+        margin: 0 !important;
+    }
+
+    .generated-report-card {
+        border: 2px solid #003876 !important;
+        box-shadow: none !important;
+        padding: 16px !important;
+        border-radius: 10px !important;
+        margin-top: 0 !important;
+    }
+
+    .report-stats-grid {
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .stat-card {
+        flex: 1 !important;
+        border: 1px solid #cbd5e1 !important;
+        background-color: #f8fafc !important;
+        padding: 6px !important;
+    }
+
+    /* 3. Render 20-Point Table in Print Mode */
+    .print-only-table-section {
+        display: block !important;
+        margin-top: 14px !important;
+    }
+
+    .print-table-heading {
+        font-size: 12px !important;
+        font-weight: 900 !important;
+        color: #003876 !important;
+        margin: 0 0 6px 0 !important;
+        text-transform: uppercase !important;
+    }
+
+    .print-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        font-size: 10px !important;
+    }
+
+    .print-table th {
+        background-color: #003876 !important;
+        color: #ffffff !important;
+        padding: 6px 8px !important;
+        text-align: left !important;
+        font-size: 9px !important;
+        text-transform: uppercase !important;
+    }
+
+    .print-table td {
+        padding: 4px 8px !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+    }
+
+    .tr-warn {
+        background-color: #fefce8 !important;
+    }
+
+    .print-tag {
+        font-size: 8px !important;
+        font-weight: 900 !important;
+        padding: 2px 6px !important;
+        border-radius: 3px !important;
+        display: inline-block !important;
+    }
+
+    .tag-pass {
+        background-color: #d1fae5 !important;
+        color: #065f46 !important;
+    }
+
+    .tag-warn {
+        background-color: #fef3c7 !important;
+        color: #92400e !important;
+    }
+
+    /* 4. Render Stamp Footer in Print Mode */
+    .print-only-stamp-footer {
+        display: block !important;
+        margin-top: 16px !important;
+    }
+
+    .stamp-flex {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-top: 2px solid #003876 !important;
+        padding-top: 8px !important;
+    }
+
+    .shop-title {
+        margin: 0 !important;
+        font-weight: 900 !important;
+        color: #003876 !important;
+        font-size: 11px !important;
+    }
+
+    .shop-sub {
+        margin: 2px 0 0 0 !important;
+        color: #64748b !important;
+        font-size: 9px !important;
+    }
+
+    .seal-badge {
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        font-size: 9px !important;
+        font-weight: 900 !important;
+        color: #059669 !important;
+        border: 1px solid #059669 !important;
+        padding: 3px 6px !important;
+        border-radius: 4px !important;
+    }
+}

@@ -1,0 +1,951 @@
+/* ==========================================================================
+   HOME PAGE PURE STYLED CSS (FULLY RESPONSIVE & MOBILE OPTIMIZED)
+   ========================================================================== */
+
+/* Main Layout Wrapper */
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    /* Prevent horizontal scrollbar */
+    box-sizing: border-box;
+}
+
+.section-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO SECTION STYLES
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    min-height: 600px;
+    background-color: var(--primary-blue, #003876);
+    color: var(--white, #ffffff);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    /* Pehle 0.2 tha, ab image clear dikhegi */
+    position: absolute;
+    inset: 0;
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            rgba(0, 40, 85, 0.85),
+            rgba(0, 56, 118, 0.7),
+            rgba(0, 24, 51, 0.6));
+}
+
+.hero-container {
+    position: relative;
+    z-index: 10;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 12px;
+    font-weight: 800;
+    color: #fcd34d;
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.ping-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-red, #e31b23);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.hero-headline {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.highlight-tag {
+    color: var(--accent-red, #e31b23);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.hero-subtext {
+    font-size: 15px;
+    color: #dbeafe;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.hero-bullets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+}
+
+.bullet-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-warning {
+    background-color: var(--warning-amber, #f59e0b);
+    color: #0f172a;
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white, #ffffff);
+}
+
+/* Highlights Card */
+.highlights-card {
+    background: var(--white, #ffffff);
+    color: var(--text-dark, #0f172a);
+    padding: 28px;
+    border-radius: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card-top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+    padding-bottom: 16px;
+    gap: 12px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-wrench-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-blue, #003876);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.rating-badge {
+    background-color: #ecfdf5;
+    color: #047857;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.stat-box {
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 12px;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.stat-num {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.stat-num.blue {
+    color: var(--primary-blue, #003876);
+}
+
+.stat-num.red {
+    color: var(--accent-red, #e31b23);
+}
+
+.stat-num.green {
+    color: var(--success-green, #10b981);
+}
+
+.stat-lbl {
+    font-size: 11px;
+    color: var(--text-muted, #64748b);
+    font-weight: 700;
+}
+
+.phone-banner {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.phone-banner-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone-title {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--primary-blue, #003876);
+}
+
+.phone-number {
+    font-size: 13px;
+    font-weight: 900;
+    font-family: monospace;
+}
+
+/* --------------------------------------------------------------------------
+   2. SECTION COMMON HEADERS
+   -------------------------------------------------------------------------- */
+.section-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-header-center {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 36px auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-sub-title {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.section-sub-title.red {
+    color: var(--accent-red, #e31b23);
+}
+
+.section-sub-title.blue {
+    color: var(--primary-blue, #003876);
+}
+
+.section-main-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text-dark, #0f172a);
+    margin-top: 4px;
+}
+
+.section-desc {
+    font-size: 13px;
+    color: var(--text-muted, #64748b);
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: var(--primary-blue, #003876);
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   3. SERVICES GRID & CARDS
+   -------------------------------------------------------------------------- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.service-card {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.srv-img-wrapper {
+    position: relative;
+    height: 180px;
+    width: 100%;
+}
+
+.srv-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.srv-category-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: var(--accent-red, #e31b23);
+    color: var(--white, #ffffff);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.srv-time-tag {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #0f172a;
+}
+
+.srv-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.srv-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary-blue, #003876);
+    margin: 0;
+}
+
+.srv-desc {
+    font-size: 12px;
+    color: var(--text-muted, #64748b);
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+.srv-highlights {
+    list-style: none;
+    margin-top: 12px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.srv-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.srv-card-footer {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+.current-price {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--primary-blue, #003876);
+}
+
+/* --------------------------------------------------------------------------
+   4. WHY US SECTION
+   -------------------------------------------------------------------------- */
+.why-us-section {
+    background-color: #f1f5f9;
+    padding: 60px 0;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.feature-card {
+    background: var(--white, #ffffff);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color, #e2e8f0);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.feature-icon.red {
+    background-color: #fef2f2;
+    color: var(--accent-red, #e31b23);
+}
+
+.feature-icon.blue {
+    background-color: #eff6ff;
+    color: var(--primary-blue, #003876);
+}
+
+.feature-icon.green {
+    background-color: #ecfdf5;
+    color: var(--success-green, #10b981);
+}
+
+.feature-icon.amber {
+    background-color: #fffbeb;
+    color: var(--warning-amber, #f59e0b);
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary-blue, #003876);
+    margin: 0;
+}
+
+.feature-card p {
+    font-size: 12px;
+    color: var(--text-muted, #64748b);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. PROCESS GRID
+   -------------------------------------------------------------------------- */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.process-card {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.step-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent-red, #e31b23);
+}
+
+/* --------------------------------------------------------------------------
+   6. PROMO BANNER
+   -------------------------------------------------------------------------- */
+.promo-banner {
+    background: linear-gradient(135deg,
+            var(--primary-blue, #003876),
+            #002855,
+            var(--accent-red, #e31b23));
+    color: var(--white, #ffffff);
+    padding: 40px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.promo-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    display: inline-block;
+}
+
+.promo-text h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.promo-text p {
+    font-size: 13px;
+    color: #dbeafe;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.btn-white {
+    background: var(--white, #ffffff);
+    color: var(--primary-blue, #003876);
+    white-space: nowrap;
+}
+
+.btn-white:hover {
+    background: #f1f5f9;
+}
+
+/* --------------------------------------------------------------------------
+   7. BRANDS GRID
+   -------------------------------------------------------------------------- */
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.brand-card {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   8. REVIEWS SECTION
+   -------------------------------------------------------------------------- */
+.reviews-section {
+    background-color: #f8fafc;
+    padding: 60px 0;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.rating-score {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary-blue, #003876);
+    margin-left: 6px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.review-card {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rev-comment {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dark, #0f172a);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.rev-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    padding-top: 12px;
+    gap: 10px;
+}
+
+.rev-author {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--primary-blue, #003876);
+}
+
+.rev-bike {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-red, #e31b23);
+}
+
+.verified-badge {
+    background-color: #ecfdf5;
+    color: #047857;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   9. MAP SECTION
+   -------------------------------------------------------------------------- */
+.map-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 32px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.map-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.map-desc {
+    font-size: 13px;
+    color: var(--text-muted, #64748b);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.map-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0f172a;
+}
+
+.map-frame-wrapper {
+    height: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color, #e2e8f0);
+    width: 100%;
+}
+
+/* ==========================================================================
+   10. COMPLETE RESPONSIVE BREAKPOINTS (TABLET & MOBILE OPTIMIZATIONS)
+   ========================================================================== */
+
+/* Laptop / Tablet Screen (< 992px) */
+@media (max-width: 992px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .hero-headline {
+        font-size: 32px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-us-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .map-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brands-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile Screen (< 768px) */
+@media (max-width: 768px) {
+    .home-wrapper {
+        gap: 24px;
+    }
+
+    .section-padding {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .hero-container {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    .hero-badge {
+        font-size: 10px;
+    }
+
+    .hero-headline {
+        font-size: 26px;
+    }
+
+    .hero-subtext {
+        font-size: 13px;
+    }
+
+    .hero-bullets {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .bullet-item {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-cta-group button,
+    .hero-cta-group a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .highlights-card {
+        padding: 20px;
+    }
+
+    .promo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .promo-banner button {
+        width: 100%;
+    }
+
+    .section-header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .section-main-title {
+        font-size: 22px;
+    }
+}
+
+/* Small Mobile (< 600px) */
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .phone-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

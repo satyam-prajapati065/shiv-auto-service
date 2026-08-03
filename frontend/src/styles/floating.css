@@ -1,0 +1,60 @@
+.floating-container {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.btn-floating-emergency {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #e31b23, #b91c1c);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgba(227, 27, 35, 0.4);
+    transition: transform 0.2s;
+}
+
+.btn-floating-emergency:hover {
+    transform: scale(1.05);
+}
+
+.floating-icon-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+}
+
+.floating-icon-btn:hover {
+    transform: scale(1.1);
+}
+
+.map-btn {
+    background-color: #1e293b;
+    color: #38bdf8;
+}
+
+.phone-btn {
+    background-color: #003876;
+}
+
+.whatsapp-btn {
+    background-color: #10b981;
+}

@@ -1,0 +1,247 @@
+.reviews-wrapper {
+    max-width: 1100px;
+}
+
+.header-badge.amber {
+    background-color: #fef3c7;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+/* Google Rating Banner */
+.google-rating-banner {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.rating-score-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.big-rating-num {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 1;
+}
+
+.star-row {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-sub {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Filter Tabs */
+.review-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.filter-tab-btn {
+    background-color: #f1f5f9;
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-tab-btn:hover {
+    background-color: #e2e8f0;
+}
+
+.filter-tab-btn.active {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+/* Reviews Grid */
+.reviews-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 992px) {
+    .reviews-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .reviews-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.user-review-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.review-top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.review-comment {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.review-user-footer {
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--primary-blue);
+}
+
+.user-bike {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-red);
+}
+
+.verified-tag {
+    background-color: #ecfdf5;
+    color: #047857;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Modal Form */
+.add-review-modal {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header-flex h3 {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--primary-blue);
+}
+
+.btn-close-modal {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.modal-form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.star-select-row {
+    display: flex;
+    gap: 8px;
+}
+
+.star-select-btn {
+    flex-grow: 1;
+    padding: 8px;
+    background-color: #f1f5f9;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.star-select-btn.selected {
+    background-color: #f59e0b;
+    color: var(--white);
+    border-color: #f59e0b;
+}
+
+.success-msg-box {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #047857;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-actions-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}

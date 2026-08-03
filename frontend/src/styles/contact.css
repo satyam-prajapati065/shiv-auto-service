@@ -1,0 +1,435 @@
+/* ==========================================================================
+   CONTACT PAGE PURE STYLED CSS (NO TAILWIND DEPENDENCY)
+   ========================================================================== */
+
+.contact-page-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+/* 1. Header Section */
+.contact-header-section {
+    text-align: center;
+    max-width: 768px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.contact-tag {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+    font-size: 11px;
+    font-weight: 900;
+    color: #e31b23;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+.contact-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: #003876;
+    margin: 0;
+    font-family: inherit;
+}
+
+.contact-subtitle {
+    font-size: 14px;
+    color: #475569;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* 2. Info Cards Grid */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 992px) {
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.info-card {
+    padding: 24px;
+    border-radius: 16px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.icon-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-badge-red {
+    background-color: #fee2e2;
+    color: #e31b23;
+}
+
+.icon-badge-blue {
+    background-color: #dbeafe;
+    color: #003876;
+}
+
+.icon-badge-green {
+    background-color: #d1fae5;
+    color: #047857;
+}
+
+.icon-badge-amber {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.info-card-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: #003876;
+    margin: 0;
+}
+
+.info-card-text {
+    font-size: 12px;
+    color: #475569;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.info-card-link {
+    font-size: 11px;
+    font-weight: 800;
+    color: #003876;
+    text-decoration: none;
+    padding-top: 4px;
+}
+
+.info-card-link:hover {
+    text-decoration: underline;
+}
+
+.info-card-phone a {
+    font-size: 12px;
+    font-weight: 700;
+    color: #003876;
+    text-decoration: none;
+    font-family: monospace;
+}
+
+.info-card-phone a:hover {
+    text-decoration: underline;
+}
+
+.info-card-whatsapp {
+    font-size: 12px;
+    font-weight: 900;
+    color: #047857;
+    text-decoration: none;
+    padding-top: 4px;
+}
+
+.info-card-whatsapp:hover {
+    text-decoration: underline;
+}
+
+/* 3. Form & Map Row */
+.form-map-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .form-map-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-card-container {
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-heading {
+    font-size: 18px;
+    font-weight: 900;
+    color: #003876;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 12px;
+    margin: 0;
+}
+
+.contact-form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+}
+
+.form-group-item label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.form-group-item input,
+.form-group-item textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #1e293b;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-group-item input:focus,
+.form-group-item textarea:focus {
+    border-color: #003876;
+    background-color: #ffffff;
+}
+
+.btn-submit-red {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    background-color: #e31b23;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(227, 27, 35, 0.2);
+    transition: background-color 0.2s;
+}
+
+.btn-submit-red:hover {
+    background-color: #c1131a;
+}
+
+.btn-submit-red:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Alerts */
+.alert-box {
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.alert-error {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+.alert-success {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.alert-success-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #047857;
+}
+
+.alert-success-text {
+    font-size: 12px;
+    color: #334155;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.alert-success-text code {
+    background-color: #d1fae5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.alert-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.btn-whatsapp-action {
+    padding: 8px 14px;
+    border-radius: 12px;
+    background-color: #059669;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-reset-action {
+    padding: 8px 14px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.map-card-container {
+    height: 380px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* 4. FAQ Accordion Section */
+.faq-section-container {
+    max-width: 896px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 24px;
+}
+
+.faq-title-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq-tag {
+    font-size: 12px;
+    font-weight: 900;
+    color: #e31b23;
+    letter-spacing: 0.05em;
+}
+
+.faq-main-title {
+    font-size: 24px;
+    font-weight: 900;
+    color: #003876;
+    margin: 0;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-card-item {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question-btn {
+    width: 100%;
+    padding: 16px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 900;
+    color: #003876;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.faq-question-btn:hover {
+    color: #e31b23;
+}
+
+.faq-question-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.faq-help-icon {
+    color: #e31b23;
+    flex-shrink: 0;
+}
+
+.faq-answer-content {
+    padding: 16px;
+    padding-top: 0;
+    font-size: 12px;
+    color: #475569;
+    font-weight: 500;
+    line-height: 1.6;
+    border-top: 1px solid #f1f5f9;
+    background-color: #f8fafc;
+}

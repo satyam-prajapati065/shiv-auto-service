@@ -1,0 +1,158 @@
+.offers-wrapper {
+    max-width: 1100px;
+}
+
+.header-badge.red {
+    background-color: #fee2e2;
+    border-color: #fecaca;
+    color: var(--accent-red);
+}
+
+/* Offers Grid */
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 992px) {
+    .offers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.offer-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.offer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.offer-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.offer-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.offer-badge {
+    background-color: var(--accent-red);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 900;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.valid-till {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.discount-tag {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent-red);
+    display: block;
+}
+
+.offer-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    margin-top: 4px;
+}
+
+.offer-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 6px;
+}
+
+.offer-card-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Coupon Box */
+.promo-code-box {
+    background-color: #f8fafc;
+    border: 1px dashed var(--border-color);
+    padding: 10px 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.promo-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--text-muted);
+    font-family: monospace;
+    display: block;
+}
+
+.promo-code {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.btn-copy {
+    background-color: #e2e8f0;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s;
+}
+
+.btn-copy:hover {
+    background-color: #cbd5e1;
+}
+
+.copied-text {
+    color: var(--success-green);
+    font-weight: 800;
+}
+
+.btn-block {
+    width: 100%;
+}
