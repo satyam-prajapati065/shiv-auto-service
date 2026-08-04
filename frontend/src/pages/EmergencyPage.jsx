@@ -42,9 +42,9 @@ export default function EmergencyPage() {
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
         setCoords({ lat, lng });
-        setLocation(
-          `GPS: ${lat.toFixed(5)}, ${lng.toFixed(5)} (Captured automatically)`,
-        );
+
+        // Coordinates ke saath direct Google Maps ka clickable link ya clean text set karein
+        setLocation(`GPS Location: https://maps.google.com/?q=${lat},${lng}`);
         setGeoLoading(false);
       },
       (err) => {
@@ -55,7 +55,6 @@ export default function EmergencyPage() {
       },
     );
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!customerName || !mobile || !location) {
