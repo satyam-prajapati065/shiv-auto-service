@@ -27,6 +27,10 @@ import BlogPage from "./pages/BlogPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 
+// Base URL Setup (.env se API URL lega, nahi to localhost)
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,7 +45,7 @@ export default function App() {
   const [reviews, setReviews] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // Fetch Live Data from MongoDB API on initial load
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -100,7 +104,9 @@ export default function App() {
 
   const handleDirectWhatsApp = (serviceName) => {
     const text = encodeURIComponent(
-      `Hello Shiv Auto Service! I want to inquire for: ${serviceName || "Bike Repair"}`,
+      `Hello Shiv Auto Service! I want to inquire for: ${
+        serviceName || "Bike Repair"
+      }`,
     );
     window.open(`https://wa.me/917408998188?text=${text}`, "_blank");
   };
@@ -124,6 +130,7 @@ export default function App() {
   const handlePartDeleted = (partId) => {
     setParts((prev) => prev.filter((p) => p.id !== partId));
   };
+
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
     return localStorage.getItem("shiv_admin_session") === "true";
   });
@@ -138,6 +145,7 @@ export default function App() {
     localStorage.removeItem("shiv_admin_session");
     setIsAdminLoggedIn(false);
   };
+
   return (
     <div className="app-layout">
       <Navbar

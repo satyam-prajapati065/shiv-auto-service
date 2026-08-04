@@ -1,7 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
+
+// Load environment variables from .env
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,14 +17,16 @@ app.use(express.json());
 // ==========================================================================
 // 1. MONGODB DATABASE CONNECTION
 // ==========================================================================
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://satyamprajapati065_db_user:satyam1234@shivautoservice.yn3jqj3.mongodb.net/shiv_auto_db?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  console.warn("⚠️ Warning: MONGODB_URI is not defined in .env file!");
+}
 
 mongoose
   .connect(MONGODB_URI)
-  .then(() => console.log("MongoDB Database Connected Successfully!"))
-  .catch((err) => console.error("MongoDB Connection Error:", err));
+  .then(() => console.log("✅ MongoDB Database Connected Successfully!"))
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
 // MongoDB Schemas & Models
 const serviceSchema = new mongoose.Schema({
@@ -98,6 +104,11 @@ const breakdownSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+const adminSchema = new mongoose.Schema({
+  username: { type: String, required: true, default: "admin" },
+  password: { type: String, required: true, default: "admin123" },
+});
+
 const Service = mongoose.model("Service", serviceSchema);
 const Part = mongoose.model("Part", partSchema);
 const Offer = mongoose.model("Offer", offerSchema);
@@ -105,19 +116,22 @@ const Review = mongoose.model("Review", reviewSchema);
 const Blog = mongoose.model("Blog", blogSchema);
 const Inquiry = mongoose.model("Inquiry", inquirySchema);
 const Breakdown = mongoose.model("Breakdown", breakdownSchema);
+const Admin = mongoose.model("Admin", adminSchema);
 
 // ==========================================================================
 // 2. INITIALIZE GEMINI AI CLIENT
 // ==========================================================================
-const GEMINI_KEY =
-  process.env.GEMINI_API_KEY ||
-  "AQ.Ab8RN6LHSphYb5jmvZ7uSMyqnIsP3p0nsSZ6KRT1ssr5fui0wg";
+const GEMINI_KEY = process.env.GEMINI_API_KEY;
 
 let aiClient = null;
-try {
-  aiClient = new GoogleGenAI({ apiKey: GEMINI_KEY });
-} catch (err) {
-  console.warn("Gemini API Init Warning:", err.message);
+if (GEMINI_KEY) {
+  try {
+    aiClient = new GoogleGenAI({ apiKey: GEMINI_KEY });
+  } catch (err) {
+    console.warn("Gemini API Init Warning:", err.message);
+  }
+} else {
+  console.warn("⚠️ Warning: GEMINI_API_KEY is not set in .env!");
 }
 
 /* ==========================================================================
@@ -182,13 +196,62 @@ app.delete("/api/services/:id", async (req, res) => {
   }
 });
 
-// 2. Spare Parts API
+// 2. Spare Parts API (Fetch, Add, Delete)
 app.get("/api/parts", async (req, res) => {
   try {
     const parts = await Part.find();
     res.json({ success: true, data: parts });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message, data: [] });
+  }
+});
+
+app.post("/api/parts", async (req, res) => {
+  const {
+    name,
+    category,
+    price,
+    brand,
+    availability,
+    rating,
+    image,
+    description,
+  } = req.body;
+
+  if (!name || !price) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Name and Price are required!" });
+  }
+
+  try {
+    const newPart = new Part({
+      id: `prt-${Date.now()}`,
+      name,
+      category: category || "Spare Part",
+      price: Number(price),
+      brand: brand || "Generic",
+      availability: availability || "In Stock",
+      rating: Number(rating) || 5.0,
+      image:
+        image ||
+        "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80",
+      description: description || "Genuine OEM Spare Part",
+    });
+
+    await newPart.save();
+    res.status(201).json({ success: true, data: newPart });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.delete("/api/parts/:id", async (req, res) => {
+  try {
+    await Part.findOneAndDelete({ id: req.params.id });
+    res.json({ success: true, message: "Part deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
@@ -202,7 +265,7 @@ app.get("/api/offers", async (req, res) => {
   }
 });
 
-// 4. Customer Reviews API (Fetch & Post)
+// 4. Customer Reviews API
 app.get("/api/reviews", async (req, res) => {
   try {
     const reviews = await Review.find().sort({ createdAt: -1 });
@@ -248,7 +311,7 @@ app.get("/api/blogs", async (req, res) => {
   }
 });
 
-// 6. Contact Inquiries
+// 6. Contact Inquiries API
 app.get("/api/inquiries", async (req, res) => {
   try {
     const inquiries = await Inquiry.find().sort({ createdAt: -1 });
@@ -280,7 +343,7 @@ app.post("/api/inquiries", async (req, res) => {
   }
 });
 
-// 7. Emergency Roadside Breakdown
+// 7. Emergency Roadside Breakdown API
 app.get("/api/breakdowns", async (req, res) => {
   try {
     const breakdowns = await Breakdown.find().sort({ createdAt: -1 });
@@ -316,7 +379,7 @@ app.post("/api/breakdown", async (req, res) => {
   }
 });
 
-// 8. Valvoline AI Advisor
+// 8. Valvoline AI Advisor API
 app.post("/api/ai-advisor", async (req, res) => {
   const { userQuery, bikeModel } = req.body;
 
@@ -352,6 +415,7 @@ Keep it concise, clear, and reassuring. End with a recommendation to contact Shi
     }
   }
 
+  // Fallback diagnostic rule system if AI is offline
   const queryLower = userQuery.toLowerCase();
   let cause = "General engine or electrical wear.";
   let recService = "General Bike Service & 20-Point Inspection";
@@ -378,79 +442,10 @@ Keep it concise, clear, and reassuring. End with a recommendation to contact Shi
   res.json({ success: true, advice: ruleAdvice });
 });
 
-// Admin Authentication
-app.post("/api/admin/login", (req, res) => {
-  const { password } = req.body;
-  if (password === "admin123" || password === "shiv123") {
-    res.json({ success: true, token: "SHIV-ADMIN-AUTH-OK" });
-  } else {
-    res
-      .status(401)
-      .json({ success: false, error: "Invalid Admin Credentials!" });
-  }
-});
-
-// Add New Spare Part (Admin Only)
-app.post("/api/parts", async (req, res) => {
-  const {
-    name,
-    category,
-    price,
-    brand,
-    availability,
-    rating,
-    image,
-    description,
-  } = req.body;
-
-  if (!name || !price) {
-    return res
-      .status(400)
-      .json({ success: false, error: "Name and Price are required!" });
-  }
-
-  try {
-    const newPart = new Part({
-      id: `prt-${Date.now()}`,
-      name,
-      category: category || "Spare Part",
-      price: Number(price),
-      brand: brand || "Generic",
-      availability: availability || "In Stock",
-      rating: Number(rating) || 5.0,
-      image:
-        image ||
-        "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80",
-      description: description || "Genuine OEM Spare Part",
-    });
-
-    await newPart.save();
-    res.status(201).json({ success: true, data: newPart });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-// Delete Spare Part (Admin Only)
-app.delete("/api/parts/:id", async (req, res) => {
-  try {
-    await Part.findOneAndDelete({ id: req.params.id });
-    res.json({ success: true, message: "Part deleted successfully" });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-// Admin Schema & Model
-const adminSchema = new mongoose.Schema({
-  username: { type: String, required: true, default: "admin" },
-  password: { type: String, required: true, default: "admin123" },
-});
-const Admin = mongoose.model("Admin", adminSchema);
-
-// Admin Login Route (Username & Password Check)
+// 9. Admin Login Route (Unique Single Definition)
 app.post("/api/admin/login", async (req, res) => {
   const { username, password } = req.body;
+
   if (!username || !password) {
     return res
       .status(400)
@@ -460,7 +455,6 @@ app.post("/api/admin/login", async (req, res) => {
   try {
     let admin = await Admin.findOne();
     if (!admin) {
-      // First time initial setup
       admin = new Admin({ username: "admin", password: "admin123" });
       await admin.save();
     }
@@ -481,7 +475,7 @@ app.post("/api/admin/login", async (req, res) => {
   }
 });
 
-// Update Admin Username & Password Route
+// 10. Update Admin Credentials Route
 app.put("/api/admin/update-credentials", async (req, res) => {
   const { newUsername, newPassword, currentPassword } = req.body;
 

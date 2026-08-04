@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 import "../styles/modal.css";
 
+// Base URL Setup (.env se API URL lega, nahi to localhost)
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+
 export default function AiAdvisorModal({
   isOpen,
   onClose,
@@ -31,7 +35,7 @@ export default function AiAdvisorModal({
     setAdviceResult("");
 
     try {
-      const res = await fetch("/api/ai-advisor", {
+      const res = await fetch(`${API_BASE_URL}/api/ai-advisor`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userQuery, bikeModel }),

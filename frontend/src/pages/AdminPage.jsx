@@ -14,6 +14,10 @@ import {
 } from "lucide-react";
 import "../styles/admin.css";
 
+// Base URL Setup (.env se API URL lega, nahi to localhost)
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+
 export default function AdminPage({
   services = [],
   parts = [],
@@ -68,7 +72,7 @@ export default function AdminPage({
 
   const loadAdminData = () => {
     // Fetch Inquiries
-    fetch("/api/inquiries")
+    fetch(`${API_BASE_URL}/api/inquiries`)
       .then((res) => res.json())
       .then((data) => {
         const apiData = data.success ? data.data : [];
@@ -83,7 +87,11 @@ export default function AdminPage({
         const uniqueMap = new Map();
 
         merged.forEach((item) => {
-          const contentKey = `${(item.name || "").trim().toLowerCase()}_${(item.mobile || "").replace(/[^0-9]/g, "")}_${(item.message || "").trim().toLowerCase()}`;
+          const contentKey = `${(item.name || "").trim().toLowerCase()}_${(
+            item.mobile || ""
+          ).replace(/[^0-9]/g, "")}_${(item.message || "")
+            .trim()
+            .toLowerCase()}`;
           if (!uniqueMap.has(contentKey) && !uniqueMap.has(item.id)) {
             uniqueMap.set(contentKey, item);
             if (item.id) uniqueMap.set(item.id, item);
@@ -101,7 +109,7 @@ export default function AdminPage({
       });
 
     // Fetch Breakdowns
-    fetch("/api/breakdowns")
+    fetch(`${API_BASE_URL}/api/breakdowns`)
       .then((res) => res.json())
       .then((data) => {
         const apiData = data.success ? data.data : [];
@@ -116,7 +124,12 @@ export default function AdminPage({
         const uniqueMap = new Map();
 
         merged.forEach((item) => {
-          const contentKey = `${(item.customerName || "").trim().toLowerCase()}_${(item.mobile || "").replace(/[^0-9]/g, "")}_${(item.issue || "").trim().toLowerCase()}`;
+          const contentKey = `${(item.customerName || "")
+            .trim()
+            .toLowerCase()}_${(item.mobile || "").replace(
+            /[^0-9]/g,
+            "",
+          )}_${(item.issue || "").trim().toLowerCase()}`;
           if (!uniqueMap.has(contentKey) && !uniqueMap.has(item.id)) {
             uniqueMap.set(contentKey, item);
             if (item.id) uniqueMap.set(item.id, item);
@@ -146,7 +159,7 @@ export default function AdminPage({
     setLoginError("");
 
     try {
-      const res = await fetch("/api/admin/login", {
+      const res = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -173,7 +186,7 @@ export default function AdminPage({
     e.preventDefault();
 
     try {
-      const res = await fetch("/api/admin/update-credentials", {
+      const res = await fetch(`${API_BASE_URL}/api/admin/update-credentials`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ newUsername, newPassword, currentPassword }),
@@ -203,7 +216,7 @@ export default function AdminPage({
       : ["Genuine Products", "Certified Mechanics"];
 
     try {
-      const res = await fetch("/api/services", {
+      const res = await fetch(`${API_BASE_URL}/api/services`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...newService, highlights: highlightsArray }),
@@ -242,7 +255,9 @@ export default function AdminPage({
       return;
 
     try {
-      const res = await fetch(`/api/services/${id}`, { method: "DELETE" });
+      const res = await fetch(`${API_BASE_URL}/api/services/${id}`, {
+        method: "DELETE",
+      });
       const data = await res.json();
       if (data.success) {
         alert("Service deleted successfully!");
@@ -259,7 +274,7 @@ export default function AdminPage({
     setSubmittingPart(true);
 
     try {
-      const res = await fetch("/api/parts", {
+      const res = await fetch(`${API_BASE_URL}/api/parts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newPart),
@@ -300,7 +315,9 @@ export default function AdminPage({
       return;
 
     try {
-      const res = await fetch(`/api/parts/${id}`, { method: "DELETE" });
+      const res = await fetch(`${API_BASE_URL}/api/parts/${id}`, {
+        method: "DELETE",
+      });
       const data = await res.json();
       if (data.success) {
         alert("Spare Part deleted successfully!");
@@ -443,7 +460,9 @@ export default function AdminPage({
           <button
             key={tab.id}
             onClick={() => setActiveAdminTab(tab.id)}
-            className={`admin-tab-btn ${activeAdminTab === tab.id ? "active" : ""}`}
+            className={`admin-tab-btn ${
+              activeAdminTab === tab.id ? "active" : ""
+            }`}
           >
             {tab.label}
           </button>
@@ -480,7 +499,12 @@ export default function AdminPage({
                       </td>
                       <td>
                         <a
-                          href={`https://wa.me/${(inq.mobile || "").replace(/[^0-9]/g, "")}?text=${encodeURIComponent(`Hello ${inq.name}, replying from Shiv Auto Service regarding your inquiry: "${inq.message}"`)}`}
+                          href={`https://wa.me/${(inq.mobile || "").replace(
+                            /[^0-9]/g,
+                            "",
+                          )}?text=${encodeURIComponent(
+                            `Hello ${inq.name}, replying from Shiv Auto Service regarding your inquiry: "${inq.message}"`,
+                          )}`}
                           target="_blank"
                           rel="noreferrer"
                           className="btn btn-whatsapp-sm"
@@ -689,9 +713,7 @@ export default function AdminPage({
         </div>
       )}
 
-      {/* ========================================================================== */}
       {/* ADD NEW SERVICE MODAL */}
-      {/* ========================================================================== */}
       {isServiceModalOpen && (
         <div className="modal-overlay">
           <div className="admin-modal-card">
@@ -728,7 +750,10 @@ export default function AdminPage({
                   <select
                     value={newService.category}
                     onChange={(e) =>
-                      setNewService({ ...newService, category: e.target.value })
+                      setNewService({
+                        ...newService,
+                        category: e.target.value,
+                      })
                     }
                   >
                     <option value="Regular">Regular</option>
@@ -829,9 +854,7 @@ export default function AdminPage({
         </div>
       )}
 
-      {/* ========================================================================== */}
       {/* ADD NEW SPARE PART MODAL */}
-      {/* ========================================================================== */}
       {isPartModalOpen && (
         <div className="modal-overlay">
           <div className="admin-modal-card">

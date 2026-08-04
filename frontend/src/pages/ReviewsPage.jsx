@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Star, Plus, CheckCircle2, X } from "lucide-react";
 import "../styles/reviews.css";
 
+// Base URL Setup (.env se API URL lega, nahi to localhost)
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+
 export default function ReviewsPage({ reviews, onAddReview }) {
   const [showAddModal, setShowAddModal] = useState(false);
   const [filterRating, setFilterRating] = useState("All");
@@ -25,7 +29,7 @@ export default function ReviewsPage({ reviews, onAddReview }) {
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/reviews", {
+      const res = await fetch(`${API_BASE_URL}/api/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, bikeModel, rating, comment }),
@@ -111,7 +115,9 @@ export default function ReviewsPage({ reviews, onAddReview }) {
           <button
             key={idx}
             onClick={() => setFilterRating(star)}
-            className={`filter-tab-btn ${filterRating === star ? "active" : ""}`}
+            className={`filter-tab-btn ${
+              filterRating === star ? "active" : ""
+            }`}
           >
             {star === "All" ? "All Reviews" : `${star} Star ★`}
           </button>
@@ -198,7 +204,9 @@ export default function ReviewsPage({ reviews, onAddReview }) {
                         key={s}
                         type="button"
                         onClick={() => setRating(s)}
-                        className={`star-select-btn ${rating >= s ? "selected" : ""}`}
+                        className={`star-select-btn ${
+                          rating >= s ? "selected" : ""
+                        }`}
                       >
                         {s} ★
                       </button>

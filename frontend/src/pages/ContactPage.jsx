@@ -12,6 +12,10 @@ import {
 } from "lucide-react";
 import "../styles/contact.css";
 
+// Base URL Setup (.env se API URL lega, nahi to localhost)
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+
 export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState(0);
   const [inquiryName, setInquiryName] = useState("");
@@ -46,7 +50,7 @@ export default function ContactPage() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/inquiries", {
+      const res = await fetch(`${API_BASE_URL}/api/inquiries`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
