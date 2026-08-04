@@ -1,36 +1,53 @@
+:root {
+    --primary-blue: #003876;
+    --primary-dark: #002855;
+    --accent-red: #e31b23;
+    --accent-red-hover: #c7151c;
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --border-color: #e2e8f0;
+}
+
 .emergency-wrapper {
-    max-width: 800px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Banner */
+/* ==========================================
+   1. TOP EMERGENCY BANNER
+   ========================================== */
 .emergency-banner {
-    background: linear-gradient(135deg, #002855, #003876, #001833);
+    background: linear-gradient(135deg, #001e3d 0%, #003876 50%, #001124 100%);
     color: var(--white);
-    padding: 40px 24px;
-    border-radius: 24px;
+    padding: 44px 28px;
+    border-radius: 28px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-    border: 1px solid #1e3a8a;
+    gap: 16px;
+    box-shadow: 0 20px 35px -10px rgba(0, 56, 118, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
 .pulse-icon-box {
-    width: 64px;
-    height: 64px;
-    background-color: var(--accent-red);
-    border-radius: 20px;
+    width: 68px;
+    height: 68px;
+    background: linear-gradient(135deg, #e31b23, #b91c1c);
+    border-radius: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px rgba(227, 27, 35, 0.6);
+    box-shadow: 0 0 25px rgba(227, 27, 35, 0.6);
     animation: pulse-red 2s infinite;
 }
 
@@ -42,7 +59,7 @@
 
     70% {
         transform: scale(1.05);
-        box-shadow: 0 0 0 15px rgba(227, 27, 35, 0);
+        box-shadow: 0 0 0 18px rgba(227, 27, 35, 0);
     }
 
     100% {
@@ -56,44 +73,54 @@
     color: var(--white);
     font-size: 11px;
     font-weight: 900;
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
 
 .emergency-title {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 900;
+    line-height: 1.2;
 }
 
 .emergency-sub {
-    font-size: 13px;
-    color: #dbeafe;
-    max-width: 580px;
+    font-size: 14px;
+    color: #cbd5e1;
+    max-width: 620px;
     line-height: 1.6;
 }
 
 .hotline-btn-wrapper {
-    margin-top: 10px;
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-hotline {
-    background-color: var(--accent-red);
+    background: linear-gradient(135deg, #e31b23, #c7151c);
     color: var(--white);
-    padding: 14px 24px;
-    border-radius: 16px;
+    padding: 16px 32px;
+    border-radius: 18px;
     font-size: 15px;
     font-weight: 900;
-    box-shadow: 0 8px 20px rgba(227, 27, 35, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(227, 27, 35, 0.4);
+    transition: all 0.3s ease;
 }
 
 .btn-hotline:hover {
-    background-color: var(--accent-red-hover);
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(227, 27, 35, 0.5);
 }
 
 .bounce {
-    animation: bounce 1.5s infinite;
+    animation: bounce 1.8s infinite;
 }
 
 @keyframes bounce {
@@ -115,100 +142,175 @@
     }
 }
 
-/* Breakdown Form Card */
+/* ==========================================
+   2. FORM CONTAINER & STYLING
+   ========================================== */
 .breakdown-form-card {
     background: var(--white);
     border: 1px solid var(--border-color);
-    padding: 32px;
-    border-radius: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    padding: 36px;
+    border-radius: 28px;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 }
 
 .form-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
     color: var(--primary-blue);
-    border-bottom: 1px solid #f1f5f9;
-    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 14px;
+}
+
+.error-alert {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .emergency-form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.input-field {
+    width: 100%;
+    padding: 13px 16px;
+    background-color: #f8fafc;
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    background-color: var(--white);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(0, 56, 118, 0.08);
+}
+
+.input-field::placeholder {
+    color: #94a3b8;
 }
 
 .location-label-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
-}
-
-.location-label-row label {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-dark);
 }
 
 .btn-gps {
-    background: none;
-    border: none;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
     color: var(--primary-blue);
-    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 800;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
+    transition: all 0.2s ease;
 }
 
 .btn-gps:hover {
-    text-decoration: underline;
+    background: #dbeafe;
+    transform: translateY(-1px);
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .btn-dispatch {
     width: 100%;
-    padding: 14px;
-    background-color: var(--accent-red);
+    padding: 16px;
+    margin-top: 8px;
+    background: linear-gradient(135deg, #e31b23, #b91c1c);
     color: var(--white);
     border: none;
-    border-radius: 12px;
-    font-size: 14px;
+    border-radius: 14px;
+    font-size: 15px;
     font-weight: 900;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(227, 27, 35, 0.3);
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(227, 27, 35, 0.35);
+    transition: all 0.3s ease;
 }
 
-.btn-dispatch:hover {
-    background-color: var(--accent-red-hover);
+.btn-dispatch:hover:not(:disabled) {
+    background: linear-gradient(135deg, #c7151c, #991b1b);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(227, 27, 35, 0.45);
 }
 
-/* Success Card */
+.btn-dispatch:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   3. ALERT SUCCESS CARD
+   ========================================== */
 .alert-success-card {
     background: var(--white);
-    border: 1px solid #fde68a;
-    border-radius: 24px;
-    padding: 36px;
+    border: 2px solid #fef08a;
+    border-radius: 28px;
+    padding: 40px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
+    box-shadow: 0 15px 30px -10px rgba(217, 119, 6, 0.15);
 }
 
 .check-icon-wrapper {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     background-color: #fef3c7;
-    border-radius: 20px;
+    border-radius: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -218,38 +320,96 @@
     background-color: #fef3c7;
     color: #92400e;
     font-size: 11px;
-    font-weight: 800;
-    padding: 4px 12px;
+    font-weight: 900;
+    padding: 6px 16px;
     border-radius: 20px;
+    letter-spacing: 0.5px;
 }
 
 .success-text h2 {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 900;
     color: var(--primary-blue);
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .emg-id {
     color: var(--accent-red);
     font-family: monospace;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .alert-info-box {
     background-color: #f8fafc;
     border: 1px solid var(--border-color);
-    padding: 16px;
-    border-radius: 12px;
+    padding: 20px;
+    border-radius: 16px;
     width: 100%;
     text-align: left;
-    font-size: 12px;
+    font-size: 13px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.alert-info-box p {
+    margin: 0;
+    color: var(--text-dark);
 }
 
 .status-active {
     color: #d97706;
     font-weight: 800;
+    background-color: #fef3c7;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+/* ==========================================
+   4. RESPONSIVE BREAKPOINTS
+   ========================================== */
+@media (max-width: 640px) {
+    .emergency-banner {
+        padding: 30px 18px;
+    }
+
+    .emergency-title {
+        font-size: 26px;
+    }
+
+    .form-row-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .breakdown-form-card {
+        padding: 24px 18px;
+    }
+
+    .btn-hotline {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+        padding: 14px 16px;
+    }
 }
